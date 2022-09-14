@@ -52,18 +52,97 @@ ggplot(data = obs_sub,
            fill = stateProvince)) +
   geom_bar() +
   labs(x = "Year",
-       y = "Frequency",
+       y = "Number of sightings",
        fill = "State") +
   theme_minimal()
-```
 
-```{r}
 ggplot(data = obs_sub,
        aes(x = year,
            fill = stateProvince)) +
   geom_bar() +
   labs(x = "Year",
-       y = "Frequency",
+       y = "Number of sightings",
        fill = "State") +
+  bbc_style()
+```
+
+```{r}
+#changing the colours
+
+ggplot(data = obs_sub,
+       aes(x = year,
+           fill = stateProvince)) +
+  geom_bar() +
+  labs(x = "Year",
+       y = "Number of sightings",
+       fill = "State") +
+  scale_fill_manual(values = c("#7DA9F0", "#BD9CD7", "#FC8EBE")) +
   theme_minimal()
+
+ggplot(data = obs_sub,
+       aes(x = year,
+           fill = stateProvince)) +
+  geom_bar() +
+  labs(x = "Year",
+       y = "Number of sightings",
+       fill = "State") +
+  scale_fill_manual(values = c("#7DA9F0", "#BD9CD7", "#FC8EBE")) +
+  bbc_style()
+```
+
+```{r}
+#creating our own theme
+
+my_theme <- function() {
+  theme(axis.title.x = element_text(family = "Lato",
+                                    face = "bold",
+                                    size = 20,
+                                    colour = "black"),
+        axis.title.y = element_text(family = "Lato",
+                                    face = "bold",
+                                    size = 20,
+                                    colour = "black"),
+        axis.text.x = element_text(family = "Lato",
+                                   size = 12,
+                                   colour = "grey30"),
+        axis.text.y = element_text(family = "Lato",
+                                   size = 20,
+                                   colour = "black"),
+        axis.line = element_line(size = 1.05,
+                                 colour = "grey20"),
+        legend.background = element_rect(fill = "white"),
+        legend.title = element_blank(),
+        legend.text = element_text(family = "Roboto",
+                                   size = 20,
+                                   colour = "black"),
+        legend.key = element_blank(),
+        legend.position = "top",
+        legend.justification = "centre",
+        plot.background = element_rect(fill = "white"),
+        panel.background = element_rect(fill = "white"),
+        panel.grid.major.x = element_line(colour = "grey90"),
+        panel.grid.minor.x = element_blank(),
+        panel.grid.major.y = element_line(colour = "grey90"),
+        panel.grid.minor.y = element_line(colour = "grey90",
+                                          linetype = "longdash"))
+}
+
+#create empty df to make a legend with different symbol shape
+circle = data.frame(year = as.numeric(c(NA, NA, NA)),
+                    yvar = as.numeric(c(NA, NA, NA)),
+                    stateProvince = c("New South Wales", "South Australia", "Western Australia"))
+
+ggplot(data = obs_sub,
+       aes(x = year,
+           fill = stateProvince)) +
+  geom_bar() +
+  labs(x = "Year",
+       y = "Number of sightings") +
+  scale_fill_manual(values = c("#7DA9F0", "#BD9CD7", "#FC8EBE")) +
+  geom_point(data = circle, #legend
+             aes(x = year,
+                 y = yvar,
+                 colour = stateProvince),
+             size = 8) +
+  my_theme()
 ```
