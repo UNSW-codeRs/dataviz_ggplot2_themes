@@ -4,6 +4,12 @@ date: "2022-09-12"
 output: html_document
 ---
 
+# Resources
+- colour palette picker + colour-blind simulator: coolors.co
+- more on themes: https://ggplot2-book.org/polishing.html
+
+# Workbook
+
 ```{r}
 #load libraries
 library(tidyverse)
