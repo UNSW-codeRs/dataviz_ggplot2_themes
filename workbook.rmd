@@ -31,7 +31,6 @@ head(spp)
 
 ```{r}
 #base plot that we are working with to build on
-
 ggplot(data = na.omit(spp), #don't plot NA values
        aes(x = y,
            y = log10(publications), #normalise distribution
@@ -41,7 +40,6 @@ ggplot(data = na.omit(spp), #don't plot NA values
 
 ```{r}
 #some filtering and cleaning up the labels
-
 ggplot(data = na.omit(spp),
        aes(x = y,
            y = log10(publications),
@@ -60,7 +58,6 @@ ggplot(data = na.omit(spp),
 
 ```{r}
 #changing colours & customising geom_point
-
 ggplot(data = na.omit(spp),
        aes(x = y,
            y = log10(publications),
@@ -88,7 +85,6 @@ ggplot(data = na.omit(spp),
 
 ```{r}
 #apply some pre-built themes
-
 ggplot(data = na.omit(spp),
        aes(x = y,
            y = log10(publications),
@@ -138,7 +134,6 @@ ggplot(data = na.omit(spp),
 
 ```{r}
 #importing fonts
-
 #if you are using extrafont
 font_import() #press y + Enter to add fonts
 fonttable()
@@ -150,11 +145,11 @@ showtext_auto()
 
 ```{r}
 #creating our own theme
-
 my_theme <- function() {
   theme(axis.title = element_text(family = "Roboto Condensed",
                                   size = 18,
                                   face = "bold"),
+        #small tick marks
         axis.text = element_text(family = "Roboto Condensed",
                                  size = 12,
                                  colour = "grey30"),
@@ -171,8 +166,10 @@ my_theme <- function() {
         legend.key = element_rect(fill = "white"),
         legend.position = "right",
         legend.justification = "centre",
+        #area outside the panel
         plot.title = element_blank(),
         plot.background = element_rect(fill = "white"),
+        #panel is where you datapoints are
         panel.background = element_rect(fill = "white"),
         panel.grid.major = element_line(colour = "grey90"),
         panel.grid.minor = element_line(colour = "grey90",
@@ -201,6 +198,7 @@ plot <- ggplot(data = na.omit(spp),
                       guide = guide_legend(override.aes = list(size = 6,
                                                                alpha = 1),
                                            ncol = 1)) +
+  #add you own theme
   my_theme()
 
 ggsave("outputs/plot.pdf", plot, width = 16, height = 9, units = "in", dpi = 300)
@@ -208,7 +206,6 @@ ggsave("outputs/plot.pdf", plot, width = 16, height = 9, units = "in", dpi = 300
 
 ```{r}
 #dark mode!
-
 my_theme_dark <- function() {
   theme(axis.title = element_text(family = "Roboto Condensed",
                                   size = 18,
