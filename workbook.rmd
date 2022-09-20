@@ -154,7 +154,7 @@ my_theme <- function() {
                                  size = 12,
                                  colour = "grey30"),
         axis.line = element_line(size = 0.6,
-                                 colour = "grey20"),
+                                 colour = "grey60"),
         legend.background = element_rect(fill = "white"),
         legend.title = element_text(family = "Roboto Condensed",
                                    size = 18,
@@ -172,8 +172,7 @@ my_theme <- function() {
         #panel is where you datapoints are
         panel.background = element_rect(fill = "white"),
         panel.grid.major = element_line(colour = "grey90"),
-        panel.grid.minor = element_line(colour = "grey90",
-                                        linetype = "dashed"))
+        panel.grid.minor = element_blank())
 }
 
 plot <- ggplot(data = na.omit(spp),
@@ -215,7 +214,7 @@ my_theme_dark <- function() {
                                  size = 12,
                                  colour = "grey70"),
         axis.line = element_line(size = 0.6,
-                                 colour = "grey70"),
+                                 colour = "grey40"),
         legend.background = element_rect(fill = "black"),
         legend.title = element_text(family = "Roboto Condensed",
                                    size = 18,
@@ -231,8 +230,7 @@ my_theme_dark <- function() {
         plot.background = element_rect(fill = "black"),
         panel.background = element_rect(fill = "black"),
         panel.grid.major = element_line(colour = "grey20"),
-        panel.grid.minor = element_line(colour = "grey20",
-                                        linetype = "dashed"))
+        panel.grid.minor = element_blank())
 }
 
 plot_dark <- ggplot(data = na.omit(spp),
